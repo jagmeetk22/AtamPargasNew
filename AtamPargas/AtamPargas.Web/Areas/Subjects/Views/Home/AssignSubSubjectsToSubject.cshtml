@@ -1,0 +1,106 @@
+﻿@model IEnumerable<AtamPargas.Models.SubjectDto>
+@{
+    ViewBag.Title = "Assign SubSubjects To Subject";
+    Layout = "~/Views/Shared/_APLayout.cshtml";
+    int subjectId = ViewBag.SubjectId;
+    string subjectName = ViewBag.SubjectName;
+}
+
+<div class="content-row">
+        <h3>
+            <span class="label label-default">
+                Subject Name&nbsp;&nbsp;:&nbsp;&nbsp;@subjectName
+            </span>
+        </h3>
+</div>
+<div class="content-row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <b>Assign Sub-Subjects</b>
+            </div>
+        </div>
+        <div class="panel-body">
+            @if (Model.Any())
+            {
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>@Html.LabelFor(z => z.FirstOrDefault().SubjectName)</th>
+                            <th>@Html.LabelFor(z => z.FirstOrDefault().SubjectNamePunjabi)</th>
+                            <th>@Html.LabelFor(z => z.FirstOrDefault().SubjectCode)</th>
+                            <th>@Html.LabelFor(z => z.FirstOrDefault().SubjectDescription)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var subject in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @if (subject.ParentSubjectId == subjectId)
+                                    {
+                                        <input type="checkbox" class="isSubSubjectChecked" data-subsubjectid="@subject.SubjectId" checked="checked" />
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" class="isSubSubjectChecked" data-subsubjectid="@subject.SubjectId" />
+                                    }
+                                    <img src="~/Content/GIF/lg.ajax-syncing-loading-icon.gif" class="ajax_loading_gif" />
+                                </td>
+                                <td>@subject.SubjectName</td>
+                                <td>@subject.SubjectNamePunjabi</td>
+                                <td>@subject.SubjectCode</td>
+                                <td>@subject.SubjectDescription</td>
+                                
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            }
+            else
+            {
+                <h4 class="text-center">
+                    No Sub-Subject
+                </h4>
+            }
+        </div>
+    </div>
+</div>
+<div class="content-row">
+    @Html.ActionLink("Back to List", "Subjects","Home")
+</div>
+
+@section scripts{
+    <script>
+        $(".isSubSubjectChecked").click(function () {
+            var thisRow = this;
+            var checkBoxChecked=$(this).is(':checked');
+            var parentSubjectId = @subjectId;
+            var subSubjectId = $(this).data("subsubjectid");
+
+            $(thisRow).next().show();
+
+            $.ajax({
+                url:"/Subjects/Home/UpdateSubSubjectOfSubject",
+                method:"POST",
+                data:{
+                    parentSubjectId:parentSubjectId,
+                    subSubjectId:subSubjectId,
+                    checkBoxChecked:checkBoxChecked
+                },
+                success:function(response){
+                    if(response.statusCode==200)
+                    {
+                        $(thisRow).next().hide();
+                    }
+                    else{
+                        alert(response.message);
+                    }
+                }
+            });
+        });
+    </script>
+}

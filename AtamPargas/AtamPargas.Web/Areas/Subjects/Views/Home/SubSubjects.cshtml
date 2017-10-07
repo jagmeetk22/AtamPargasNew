@@ -1,0 +1,69 @@
+﻿@model IEnumerable<AtamPargas.Models.SubjectDto>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_APLayout.cshtml";
+}
+
+
+
+<div class="content-row">
+    <a href="/Subjects/Home/Add" class="badge badge-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add Subject</a>
+</div>
+<div class="content-row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <b>Sub-Subjects</b>
+            </div>
+        </div>
+        <div class="panel-body">
+            @if (Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>@Html.LabelFor(x => x.FirstOrDefault().SubjectName)</th>
+                                <th>@Html.LabelFor(x => x.FirstOrDefault().SubjectNamePunjabi)</th>
+                                <th>@Html.LabelFor(x => x.FirstOrDefault().SubjectCode)</th>
+                                <th>@Html.LabelFor(x => x.FirstOrDefault().SubjectDescription)</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                            int i = 1;
+                            }
+                            @foreach (var subject in Model)
+            {
+                        <tr>
+                            <td>@i</td>
+                            <td>@subject.SubjectName</td>
+                            <td>@subject.SubjectNamePunjabi</td>
+                            <td>@subject.SubjectCode</td>
+                            <td>@subject.SubjectDescription</td>
+                            <td style="font-size:18px;">
+                                <a href="/Subjects/Home/Delete/@subject.SubjectId" onclick='return confirmAction();'><span class="glyphicon glyphicon-remove-circle text-danger"></span></a>&nbsp;&nbsp;
+                                <a href="/Subjects/Home/Edit/@subject.SubjectId"><span class="glyphicon glyphicon-pencil text-warning"></span></a>
+                            </td>
+                        </tr>
+                            i++;
+                        }
+                        </tbody>
+                    </table>
+
+                </div>
+                                }
+                                else
+                                {
+                                    <h4 class="text-center">
+                                        No Sub-Subject
+                                    </h4>
+                                }
+        </div>
+    </div>
+</div>
+<div class="content-row">
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,4 @@
+E:\Work\AtamPargas\AtamPargas.Models\bin\Debug\AtamPargas.Models.dll
+E:\Work\AtamPargas\AtamPargas.Models\bin\Debug\AtamPargas.Models.pdb
+E:\Work\AtamPargas\AtamPargas.Models\obj\Debug\AtamPargas.Models.dll
+E:\Work\AtamPargas\AtamPargas.Models\obj\Debug\AtamPargas.Models.pdb

@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "UploadFile";
+    Layout = "~/Views/Shared/_APLayout.cshtml";
+}
+
+<style>
+    .bar {
+    height: 18px;
+    background: green;
+}
+      .bar1 {
+    height: 22px;
+    background: blue;
+}
+</style>
+<h2>UploadFile</h2>
+
+<div class="content-row">
+
+    <input id="fileupload" type="file" name="files[]" data-url="/Home/UploadFilePost/" multiple>
+    <div id="progress">
+        <div class="bar" style="width: 0%;"></div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <div id="progress1">
+        <div class="bar1" style="width: 1%;"></div>
+    </div>
+
+
+    <div role="presentation">
+        <div class="files"> </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    @using (Html.BeginForm("UploadFileJquery", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "Myform" }))
+    {
+        <input type="file" name="files" />
+        <input type="submit" />
+    }
+    <div class="progress" style="width:50%">
+        <div class="progress-bar"></div>
+        <div class="percent">0%</div>
+    </div>
+
+    <div id="status"></div>
+
+</div>
+
+
+@section scripts{
+
+<script src="~/Content/JQueryUploader/jquery.ui.widget.js"></script>
+<script src="~/Content/JQueryUploader/jquery.iframe-transport.js"></script>
+<script src="~/Content/JQueryUploader/jquery.fileupload.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(function () {
+                $('#fileupload').fileupload({
+                    sequentialUploads: true,
+                    multipart: false,
+                    dataType: 'json',
+                    done: function (e, data) {
+                        console.log(data);
+                        console.log(data.textStatus);
+                        //$.each(data.result.files, function (index, file) {
+                        //    $('<p/>').text(file.name).appendTo(document.body);
+                        //});
+                    },
+                    progress: function (e, data) {
+                        console.log(data.loaded);
+                        var progress = parseInt(data.loaded / data.total * 100, 10);
+                        $('#progress1 .bar1').css(
+                            'width',
+                            progress + '%'
+                        );
+                    },
+                    progressall: function (e, data) {
+                        console.log(data.loaded);
+                        var progress = parseInt(data.loaded / data.total * 100, 10);
+                        $('#progress .bar').css(
+                            'width',
+                            progress + '%'
+                        );
+                    }
+                });
+            });
+        });
+    </script>
+
+<script src="http://malsup.github.com/jquery.form.js"></script> 
+<script>
+    $(document).ready(function ($) {
+
+        var bar = $('.progress-bar');
+        var percent = $('.percent');
+        var status = $('#status');
+
+        $('#Myform').ajaxForm({
+            beforeSend: function () {
+                status.empty();
+                var percentVal = '0%';
+                bar.width(percentVal);
+                percent.html(percentVal);
+            },
+            uploadProgress: function (event, position, total, percentComplete) {
+                var percentVal = percentComplete + '%';
+                bar.width(percentVal);
+                percent.html(percentVal);
+            },
+            complete: function (xhr) {
+                status.html(xhr.responseText);
+            }
+        });
+    });
+    </script>
+}

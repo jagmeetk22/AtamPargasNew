@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>@Page.Title</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="favicon_16.ico" />
+    <link rel="bookmark" href="favicon_16.ico" />
+    <!-- site css -->
+    <link rel="stylesheet" href="/Content/Template/dist/css/site.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
+    <!-- <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'> -->
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/Content/Template/dist/js/site.min.js"></script>
+    <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+    @*---Punjabi Keyboard---*@
+    <link href="~/Scripts/PunjabiText/keyboard.css" rel="stylesheet" />
+    <link href="~/Content/CommonStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <!--nav-->
+    <nav role="navigation" class="navbar navbar-custom">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button data-target="#bs-content-row-navbar-collapse-5" data-toggle="collapse" class="navbar-toggle" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand">Atam Pargas</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div id="bs-content-row-navbar-collapse-5" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    @*<li class="active"><a href="getting-started.html">Getting Started</a></li>*@
+                    <!-- <li class="disabled"><a href="#">Link</a></li> -->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Hello User <b class="caret"></b></a>
+                        <ul role="menu" class="dropdown-menu">
+                            @*<li class="divider"></li>*@
+                            <li class="disabled"><a href="#">Signout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!--header-->
+    <div class="container-fluid">
+        <!--documents-->
+        <div class="row row-offcanvas row-offcanvas-left">
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" role="navigation">
+                <ul class="list-group panel">
+                    <li class="list-group-item"><i class="glyphicon glyphicon-align-justify"></i> <b>Navigation</b></li>
+                    <li class="list-group-item"><a href="index.html"><i class="glyphicon glyphicon-home"></i>Dashboard </a></li>
+                    <li class="list-group-item"><a href="/Subjects/Home/Add"><i class="glyphicon glyphicon-plus"></i>Add Subject </a></li>
+                    <li class="list-group-item"><a href="/Subjects/Home/Subjects"><i class="glyphicon glyphicon-th-large"></i>Subjects </a></li>
+                    <li class="list-group-item"><a href="/Subjects/Home/SubSubjects"><i class="glyphicon glyphicon-th-list"></i>Sub-Subjects</a></li>
+                    <li class="list-group-item"><a href="alerts.html"><i class="glyphicon glyphicon-bell"></i>Add Book</li>
+                    <li class="list-group-item"><a href="timeline.html"><i class="glyphicon glyphicon-indent-left"></i>Books</a></li>
+                    <li class="list-group-item"><a href="calendars.html"><i class="glyphicon glyphicon-calendar"></i>Add Author</a></li>
+                    <li class="list-group-item"><a href="typography.html"><i class="glyphicon glyphicon-font"></i>Authors</a></li>
+                    <li class="collapse" id="demo4">
+                        <a href="" class="list-group-item">Subitem 1</a>
+                        <a href="" class="list-group-item">Subitem 2</a>
+                        <a href="" class="list-group-item">Subitem 3</a>
+                    </li>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-9 content">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><a href="javascript:void(0);" class="toggle-sidebar"><span class="fa fa-angle-double-left" data-toggle="offcanvas" title="Maximize Panel"></span></a> @ViewBag.PanelTitle</h3>
+                    </div>
+                    <div class="panel-body" style="min-height:700px;">
+                            @RenderBody()
+                    </div><!-- panel body -->
+                </div>
+            </div><!-- content -->
+        </div>
+    </div>
+    <!--footer-->
+    <div class="site-footer">
+        <div class="container">
+            <div class="copyright text-center">
+                <p><a>Atam Pargas Application</a> © 2017 </p>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/PunjabiText/keyboard.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    @RenderSection("scripts",false)
+</body>
+</html>
