@@ -8,3 +8,13 @@ E:\Work\AtamPargas\AtamPargas.Data\bin\Debug\EntityFramework.SqlServer.xml
 E:\Work\AtamPargas\AtamPargas.Data\obj\Debug\AtamPargas.Data.csprojResolveAssemblyReference.cache
 E:\Work\AtamPargas\AtamPargas.Data\obj\Debug\AtamPargas.Data.dll
 E:\Work\AtamPargas\AtamPargas.Data\obj\Debug\AtamPargas.Data.pdb
+E:\Work\GithubProjects\AtamPargasNew\AtamPargas\AtamPargas.Data\bin\Debug\AtamPargas.Data.dll.config
+E:\Work\GithubProjects\AtamPargasNew\AtamPargas\AtamPargas.Data\bin\Debug\AtamPargas.Data.dll
+E:\Work\GithubProjects\AtamPargasNew\AtamPargas\AtamPargas.Data\bin\Debug\AtamPargas.Data.pdb
+E:\Work\GithubProjects\AtamPargasNew\AtamPargas\AtamPargas.Data\bin\Debug\EntityFramework.dll
+E:\Work\GithubProjects\AtamPargasNew\AtamPargas\AtamPargas.Data\bin\Debug\EntityFramework.SqlServer.dll
+E:\Work\GithubProjects\AtamPargasNew\AtamPargas\AtamPargas.Data\bin\Debug\EntityFramework.xml
+E:\Work\GithubProjects\AtamPargasNew\AtamPargas\AtamPargas.Data\bin\Debug\EntityFramework.SqlServer.xml
+E:\Work\GithubProjects\AtamPargasNew\AtamPargas\AtamPargas.Data\obj\Debug\AtamPargas.Data.csprojResolveAssemblyReference.cache
+E:\Work\GithubProjects\AtamPargasNew\AtamPargas\AtamPargas.Data\obj\Debug\AtamPargas.Data.dll
+E:\Work\GithubProjects\AtamPargasNew\AtamPargas\AtamPargas.Data\obj\Debug\AtamPargas.Data.pdb

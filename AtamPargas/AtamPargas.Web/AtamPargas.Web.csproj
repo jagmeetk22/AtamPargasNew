@@ -374,6 +374,7 @@
     <Content Include="Areas\Subjects\Views\Home\Edit.cshtml" />
     <Content Include="Areas\Subjects\Views\Home\AssignSubSubjectsToSubject.cshtml" />
     <Content Include="Areas\Authors\Views\web.config" />
+    <Content Include="Areas\Authors\Views\Home\AllAuthors.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -431,7 +432,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Authors\Models\" />
-    <Folder Include="Areas\Authors\Views\Home\" />
     <Folder Include="Areas\Authors\Views\Shared\" />
     <Folder Include="Areas\Books\Controllers\" />
     <Folder Include="Areas\Books\Models\" />

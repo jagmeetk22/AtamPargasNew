@@ -9,23 +9,48 @@ using System.Threading.Tasks;
 
 namespace AtamPargas.Core
 {
-    public class AuthorManager
+    public class AuthorManager : IGenericRepository<AuthorDto>
     {
-        public List<AuthorDto> AllAuthors()
+        private IGenericRepository<Author> repository = null;
+        public AuthorManager()
         {
-            using (var context = new AtamPargasDBEntities())
-            {
-                Mapper.Initialize(cfg =>
-                {
-                    cfg.CreateMap<Author, SubjectDto>();
-                });
-                var result = new List<AuthorDto>();
-                var entity = context.Authors.ToList();
-                return Mapper.Map(entity, result);
-            }
+            this.repository = new GenericRepository<Author>();
         }
 
-           
+        public void Delete(object id)
+        {
+            throw new NotImplementedException();
+        }
 
+        public void Insert(AuthorDto obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Save()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<AuthorDto> SelectAll()
+        {
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Author, AuthorDto>();
+            });
+            var result = new List<AuthorDto>();
+            var entity = repository.SelectAll();
+            return Mapper.Map(entity, result);
+        }
+
+        public AuthorDto SelectByID(object id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(AuthorDto obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
