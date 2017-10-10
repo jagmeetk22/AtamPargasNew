@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +15,12 @@ namespace AtamPargas.Models
         }
 
         public int AuthorId { get; set; }
+        [Required]
         public string AuthorCode { get; set; }
+        [Required]
         public string AuthorName { get; set; }
         public string AuthorNamePunjabi { get; set; }
+        [StringLength(10,MinimumLength =10,ErrorMessage ="Number must be of 10 digits.")]
         public string AuthorContactNumber { get; set; }
         public string AuthorAddress { get; set; }
         public bool IsDeleted { get; set; }

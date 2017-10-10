@@ -1,8 +1,91 @@
-﻿
+﻿@model IEnumerable<AtamPargas.Models.AuthorDto>
 @{
-    ViewBag.Title = "AllAuthors";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_APLayout.cshtml";
 }
 
-<h2>AllAuthors</h2>
 
+
+<div class="content-row">
+    <div class="well">
+        <a href="/Authors/Home/Add" class="badge badge-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add Authoor </a>
+    </div>
+</div>
+<div class="content-row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <b>Authors</b>
+            </div>
+        </div>
+        <div class="panel-body">
+            @if (Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>@Html.LabelFor(x => x.FirstOrDefault().AuthorName)</th>
+                                <th>@Html.LabelFor(x => x.FirstOrDefault().AuthorNamePunjabi)</th>
+                                <th>@Html.LabelFor(x => x.FirstOrDefault().AuthorCode)</th>
+                                <th>@Html.LabelFor(x => x.FirstOrDefault().AuthorContactNumber)</th>
+                                <th>@Html.LabelFor(x => x.FirstOrDefault().AuthorAddress)</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int i = 1;
+                            }
+                            @foreach (var subject in Model)
+                            {
+                                <tr>
+                                    <td>@i</td>
+                                    <td>@subject.AuthorName</td>
+                                    <td>@subject.AuthorNamePunjabi</td>
+                                    <td>@subject.AuthorCode</td>
+                                    <td>@subject.AuthorContactNumber</td>
+                                    <td>@subject.AuthorAddress</td>
+                                    <td style="font-size:18px;">
+                                        <a href="/Authors/Home/Add/@subject.AuthorId"><span class="glyphicon glyphicon-pencil text-warning"></span></a>
+                                        <a href="/Authors/Home/Delete/@subject.AuthorId" class="deleteBtn"><span class="glyphicon glyphicon-remove-circle text-danger"></span></a>&nbsp;&nbsp;
+                                    </td>
+                                </tr>
+                                i++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                                }
+                                else
+                                {
+                                    <h4 class="text-center">
+                                        No Author
+                                    </h4>
+                                }
+        </div>
+    </div>
+</div>
+<div class="content-row">
+    @Html.ActionLink("Back to List", "AllSubjects")
+</div>
+
+@section scripts{
+<script>
+    $(document).ready(function () {
+        $(".deleteBtn").click(function () {
+            var isConfirmed = confirm("You want to delete.");
+            if(isConfirmed)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        });
+    });
+
+</script>
+}

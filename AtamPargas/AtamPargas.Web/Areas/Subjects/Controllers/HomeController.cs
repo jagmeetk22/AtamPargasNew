@@ -6,7 +6,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using AtamPargas.Models.CommonMessages;
 using AtamPargas.Models.Enum;
 
 namespace AtamPargas.Web.Areas.Subjects.Controllers
@@ -189,7 +188,7 @@ namespace AtamPargas.Web.Areas.Subjects.Controllers
                     return Json(new
                     {
                         statusCode = StatusCode.Success,
-                        message = CommonMessages.SuccessUpdate
+                        message = CommonMessages.successfullyUpdated
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
@@ -198,13 +197,13 @@ namespace AtamPargas.Web.Areas.Subjects.Controllers
                 return Json(new
                 {
                     statusCode = StatusCode.Error,
-                    message = CommonMessages.Error
+                    message = CommonMessages.error
                 }, JsonRequestBehavior.AllowGet);
             }
             return Json(new
             {
                 statusCode = StatusCode.Error,
-                message = CommonMessages.Error
+                message = CommonMessages.error
             }, JsonRequestBehavior.AllowGet);
         }
 

@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="AuthorManager.cs" />
     <Compile Include="BookManager.cs" />
+    <Compile Include="CommonMessages.cs" />
+    <Compile Include="Enum.cs" />
     <Compile Include="GenericRepository.cs" />
     <Compile Include="IGenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

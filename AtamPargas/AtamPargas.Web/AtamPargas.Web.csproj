@@ -375,6 +375,7 @@
     <Content Include="Areas\Subjects\Views\Home\AssignSubSubjectsToSubject.cshtml" />
     <Content Include="Areas\Authors\Views\web.config" />
     <Content Include="Areas\Authors\Views\Home\AllAuthors.cshtml" />
+    <Content Include="Areas\Authors\Views\Home\Add.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

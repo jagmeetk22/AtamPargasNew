@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="AuthorDto.cs" />
     <Compile Include="BookDto.cs" />
-    <Compile Include="CommonMessages\CommonMessages.cs" />
     <Compile Include="Enum\StatusCode.cs" />
     <Compile Include="Enum\TrueFalse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

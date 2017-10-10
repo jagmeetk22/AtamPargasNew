@@ -15,42 +15,70 @@ namespace AtamPargas.Core
         public AuthorManager()
         {
             this.repository = new GenericRepository<Author>();
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Author, AuthorDto>();
+                cfg.CreateMap<AuthorDto, Author>();
+            });
         }
-
         public void Delete(object id)
         {
-            throw new NotImplementedException();
+            repository.Delete(id);
+            repository.Save();
         }
-
         public void Insert(AuthorDto obj)
         {
-            throw new NotImplementedException();
+            Author entity = new Author();
+            Mapper.Map(obj, entity);
+            repository.Insert(entity);
+            repository.Save();
         }
-
         public void Save()
         {
             throw new NotImplementedException();
         }
-
         public IEnumerable<AuthorDto> SelectAll()
         {
-            Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<Author, AuthorDto>();
-            });
             var result = new List<AuthorDto>();
             var entity = repository.SelectAll();
             return Mapper.Map(entity, result);
         }
-
-        public AuthorDto SelectByID(object id)
+        public AuthorDto SelectByID(int id)
         {
-            throw new NotImplementedException();
-        }
+            Author entity = repository.SelectByID(id);
+            AuthorDto result = new AuthorDto();
 
+            return Mapper.Map(entity, result);
+        }
         public void Update(AuthorDto obj)
         {
-            throw new NotImplementedException();
+            Author entity = new Author();
+            Mapper.Map(obj, entity);
+            repository.Update(entity);
+            repository.Save();
+        }
+        public List<string> GetCodeListByCode(string code)
+        {
+            using (var context = new AtamPargasDBEntities())
+            {
+                return context.Authors.Where(x => x.AuthorCode.Contains(code)).Select(z => z.AuthorCode).ToList();
+            }
+        }
+        public bool CheckIfCodeExists(string code, int? id)
+        {
+            bool result = false;
+            using (var context = new AtamPargasDBEntities())
+            {
+                if (id > 0)
+                {
+                    result = context.Authors.Any(z => z.AuthorCode == code.ToUpper() && z.AuthorId != id);
+                }
+                else
+                {
+                    result = context.Authors.Any(z => z.AuthorCode == code.ToUpper());
+                }
+            }
+            return result;
         }
     }
 }

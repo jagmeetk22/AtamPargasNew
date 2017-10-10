@@ -22,19 +22,30 @@ namespace AtamPargas.Core
             table = db.Set<T>();
         }
 
+        public bool CheckIfCodeExists(string code, int? id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(object id)
+        {
+            T existing = table.Find(id);
+            table.Remove(existing);
+        }
+
+        public List<string> GetCodeListByCode(string code)
         {
             throw new NotImplementedException();
         }
 
         public void Insert(T obj)
         {
-            throw new NotImplementedException();
+            table.Add(obj);
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            db.SaveChanges();
         }
 
         public IEnumerable<T> SelectAll()
@@ -42,14 +53,18 @@ namespace AtamPargas.Core
             return table.ToList();
         }
 
-        public T SelectByID(object id)
+        public T SelectByID(int id)
         {
-            throw new NotImplementedException();
+            return table.Find(id);
         }
 
         public void Update(T obj)
         {
-            throw new NotImplementedException();
+            using (var context = new AtamPargasDBEntities())
+            {
+                context.Entry(obj).State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
     }
 }
